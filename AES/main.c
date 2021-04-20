@@ -8,17 +8,17 @@ static inline void ignore_ret() {}
 
 int main(int argc, char *argv[]) {
 
-	uint8_t i, r;
+    uint8_t i, r;
     uint8_t key[16];
     uint8_t plaintext[16];
 
-    printf("Introduzca la clave de 16 bytes en hexadecmal:\n");
+    	printf("Introduzca la clave de 16 bytes en hexadecmal:\n");
 	for(i = 0; i < 16; i++) {
 		printf("bytes[%d]:",i);
 		ignore_ret(scanf("%2hhxx", key+i));
 	}
 
-    printf("Introduzca el texto original de 16 bytes en hexadecmal:\n");
+    	printf("Introduzca el texto original de 16 bytes en hexadecmal:\n");
 	for(i = 0; i < 16; i++) {
 		printf("bytes[%d]:",i);
 		ignore_ret(scanf("%2hhx", plaintext+i));
@@ -27,13 +27,13 @@ int main(int argc, char *argv[]) {
 	uint8_t ciphertext[AES_BLOCK_SIZE];
 	uint8_t roundkeys[AES_ROUND_KEY_SIZE];
 	
-	printf("\n--------------------Bienvenido al algoritmo AES-------------------------\n\n");
+    	printf("\n--------------------Bienvenido al algoritmo AES-------------------------\n\n");
 
-	//Mostrar Clave
-	printf("Clave: ");
-    for(int i = 0; i < 16; i++) {
-        printf("%.2x", key[i]);
-    }
+    	//Mostrar Clave
+    	printf("Clave: ");
+    	for(int i = 0; i < 16; i++) {
+        	printf("%.2x", key[i]);
+    	}
 
 	//Mostrar Texto Original
 	printf("\nBloque de Texto Original: ");
