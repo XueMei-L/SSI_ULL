@@ -1,3 +1,6 @@
+#ifndef CV_HPP
+#define CV_HPP
+
 #include <iostream>
 
 class Vigenere_Cipher{
@@ -12,3 +15,5 @@ class Vigenere_Cipher{
     private:
 
 };
+
+#endif

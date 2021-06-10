@@ -1,3 +1,16 @@
+/********************************************************************
+* AUTHOR: XueMei Lin
+* EMAIL: alu0101225845@ull.edu.es
+* UNIVERSITY: Universidad de La Laguna
+* SUBJECT: Seguridad en sistemas informaticos
+* VERSION: 2.0
+* PRACTICE: 05
+* TITLE: The vigenere cipher
+* DESCRIPTION: Implement the vigenere cipher
+* COMPILATION: make
+*              make clean (para eliminar)
+* *****************************************************************/
+
 #include <iostream>
 #include "02_rc4.hpp"
 

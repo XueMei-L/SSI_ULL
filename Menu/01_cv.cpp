@@ -1,45 +1,84 @@
-#include <iostream>
+/********************************************************************
+* AUTHOR: XueMei Lin
+* EMAIL: alu0101225845@ull.edu.es
+* UNIVERSITY: Universidad de La Laguna
+* SUBJECT: Seguridad en sistemas informaticos
+* VERSION: 2.0
+* PRACTICE: 05
+* TITLE: The vigenere cipher
+* DESCRIPTION: Implement the vigenere cipher
+* COMPILATION: make
+*              make clean (para eliminar)
+* *****************************************************************/
+
+/**
+ * EXAMPLE: 
+ * key word: MISION
+ * Original text: ESTE MENSAJE SE AUTODESTRUIRA
+ * 
+ * ESTEME NSAJES EAUTOD ESTRUI RA   (This is original mensage)
+ * MISION MISION MISION MISION MI   (This is key word)
+ * QALMAR ZASRSF QIMBCQ QALZIV DI   (This is result)
+ * 
+ * Texto cifrado: QALMARZASRSFQIMBCQQALZIVDI
+*/
+
+
+/**
+ * Include files
+*/
 #include "01_cv.hpp"
 
+/**
+ * Constructor
+ * Destroyer
+*/
 Vigenere_Cipher::Vigenere_Cipher(){}
 Vigenere_Cipher::~Vigenere_Cipher(){}
 
+
+/**
+ * Main menu
+*/
 void Vigenere_Cipher::algoritmo(){
-    std::cout << "\n------------------------Bienvenido al algoritmo Vigenere-------------------" << std::endl;
+    std::cout << "\n------------------------Welcome to the Vigenere algorithm-------------------" << std::endl;
     std::string result;
-    int opcion;
+    int option;
     int num = 0;
     while(num == 0){
-        std::cout << "\n>> Que operacion quiere realizar con el metodo 'cifrado de Vigenere'" << std::endl
-                  << ">> 1. Cifrado.\n"
-                  << ">> 2. Descifrado.\n"
-                  << ">> 3. Volver al menu inicial" << std::endl;
-        std::cout << ">> Su opcion es:";      
-        std::cin >> opcion;
-        if(opcion == 1) {
+        std::cout << "\n>> What operacion do you want to perform with 'Vigenere Encroyption' method" << std::endl
+                  << ">> 1. Encrypt.\n"
+                  << ">> 2. Descrypt.\n"
+                  << ">> 3. Back to menu" << std::endl;
+        std::cout << ">> Your option is:";      
+        std::cin >> option;
+        if(option == 1) {
             std::string passwd_C;
-            std::cout << ">> Dime la clave que quiere cifrar:";
+            std::cout << ">> Tell me a key word:";
             std::cin >> passwd_C;
-            std::string msg_orignal;
-            std::cout << ">> Que mensaje quiere cifrar:";
-            std::cin >> msg_orignal;    
-            Vigenere_encrypt(passwd_C, msg_orignal, result);
-        }else if(opcion == 2) {
+            std::string originalMsg;
+            std::cout << ">> What message do you want to encrypt:";
+            std::cin >> originalMsg;    
+            Vigenere_encrypt(passwd_C, originalMsg, result);
+        }else if(option == 2) {
             std::string msg_Desc;
             std::string passwd_Desc;
-            std::string msg_original;
-            std::cout << ">> Dime la clave que quiere descifrar:";
+            std::string originalMsg;
+            std::cout << ">> Tell me a key word:";
             std::cin >> passwd_Desc;
-            std::cout << ">> Que mensaje quiere descifrar:";
+            std::cout << ">> What message do you want to descrypt:";
             std::cin >> msg_Desc;
-            Vigenere_decrypt(passwd_Desc, msg_Desc, msg_original);
+            Vigenere_decrypt(passwd_Desc, msg_Desc, originalMsg);
         }else {
-            std::cout << "\n------------------------Saliendo al algoritmo Vigenere-------------------\n" << std::endl;
+            std::cout << "\n------------------------Exiting to the Vigenere algorithm-------------------\n" << std::endl;
             num ++;
         }
     }
 }
 
+/**
+ * Method to encrypt
+*/
 void Vigenere_Cipher::Vigenere_encrypt(std::string pw, std::string msg, std::string result) {
     
     result.resize(msg.size());
@@ -65,8 +104,8 @@ void Vigenere_Cipher::Vigenere_encrypt(std::string pw, std::string msg, std::str
         }
     }
 
-    std::cout << "CLAVE:   " << pw << std::endl;
-    std::cout << "MGS:     ";
+    std::cout << "KEY:         " << pw << std::endl;
+    std::cout << "MSG:         ";
     for(int i = 0; i < msg.size(); i++) {
         if((i != 0) && (i % pw.size() == 0)){
             std::cout << " ";
@@ -75,7 +114,7 @@ void Vigenere_Cipher::Vigenere_encrypt(std::string pw, std::string msg, std::str
     }
     std::cout << std::endl;
 
-    std::cout << "CIFRADO: ";
+    std::cout << "MSG_ENCRYPT: ";
     for(int i = 0; i < result.size(); i++) {
         if((i != 0) && i % pw.size() == 0){
             std::cout << " ";
@@ -86,6 +125,9 @@ void Vigenere_Cipher::Vigenere_encrypt(std::string pw, std::string msg, std::str
 
 }
 
+/**
+ * Method to descrypt
+*/
 void Vigenere_Cipher::Vigenere_decrypt(std::string pw, std::string result, std::string msg) {
 
     msg.resize(result.size());
@@ -112,7 +154,7 @@ void Vigenere_Cipher::Vigenere_decrypt(std::string pw, std::string result, std::
         msg[i] = result[i];
         }
     }
-        std::cout << "CLAVE:        " << pw << std::endl
-                  << "Msg_cifrado:  " << result << std::endl
-                  << "Msg_original: " << msg << std::endl << std::endl;
+        std::cout << "KEY:          " << pw << std::endl
+                  << "MSG_ENCRYPT:  " << result << std::endl
+                  << "MSG_ORIGINAL: " << msg << std::endl << std::endl;
 }
