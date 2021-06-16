@@ -23,9 +23,6 @@ class chacha20
 private:
     uint8_t char_to_uint[256];
     const char uint_to_char[10 + 26 + 1] = "0123456789abcdefghijklmnopqrstuvwxyz";
-    typedef std::vector<uint8_t> Bytes;
-    Bytes str_to_bytes(const char *);
-    Bytes hex_to_raw(const Bytes &);
     void Chacha20Block(uint8_t*, uint8_t*, uint32_t);
     void Ronda(uint32_t const);
     uint32_t state[16];
@@ -37,8 +34,8 @@ private:
 public:
     chacha20();
     ~chacha20();
-    void menu();
     void algoritmo();
+    void init();
 };
 
 #endif //CHACHA_20_HPP
