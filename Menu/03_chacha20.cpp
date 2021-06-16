@@ -22,20 +22,20 @@ chacha20::~chacha20(){}
  * To ask the user what operation wanna perferm
 */
 void chacha20::menu() {
-    std::cout << "\n--------------------Bienvenido al algoritmo Chacha20-------------------------\n";
+    std::cout << "\n--------------------Welcome to the chacha20 algorithm-------------------------\n";
     int k = 0;
     while(k == 0) {
-        std::cout << "\n>> Que operacion quiere realizar con el algoritmo 'Chacha20'"
-            << "\n>> 1. Cifrar con Chacha20"
+        std::cout << "\n>> What operation do you want to perform with the chacha20?"
+            << "\n>> 1. Encrypt using Chacha20"
             << "\n>> 2. Bach to the menu."
-            << "\nSu option es: ";
+            << "\n>> Your option is: ";
         std::string option;
         std::cin >> option;
         if(option == "1") {
             algoritmo();
             k = 0;
         }else if(option == "2") {
-            std::cout << "\n--------------------Saliendo al algoritmo Chacha20-----------------\n\n";
+            std::cout << "\n--------------------Exiting -----------------\n\n";
             k = 1;
         }else{
             std::cout << "\n>> No es una opcion, por favor, vuelva a introducir una option:";

@@ -46,7 +46,7 @@ void Vigenere_Cipher::algoritmo(){
     int option;
     int num = 0;
     while(num == 0){
-        std::cout << "\n>> What operacion do you want to perform with 'Vigenere Encroyption' method" << std::endl
+        std::cout << "\n>> What operacion do you want to perform with 'Vigenere Encroyption' method?" << std::endl
                   << ">> 1. Encrypt.\n"
                   << ">> 2. Descrypt.\n"
                   << ">> 3. Back to the menu" << std::endl;
@@ -69,9 +69,11 @@ void Vigenere_Cipher::algoritmo(){
             std::cout << ">> What message do you want to descrypt:";
             std::cin >> msg_Desc;
             Vigenere_decrypt(passwd_Desc, msg_Desc, originalMsg);
-        }else {
+        }else if(option == 3){
             std::cout << "\n------------------------Exiting to the Vigenere algorithm-------------------\n" << std::endl;
             num ++;
+        }else {
+            std::cout << "This is an option available, please choose an option again.";
         }
     }
 }
