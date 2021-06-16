@@ -37,8 +37,8 @@ private:
 public:
     chacha20();
     ~chacha20();
+    void menu();
     void algoritmo();
-    void algoritmo1();
 };
 
 #endif //CHACHA_20_HPP

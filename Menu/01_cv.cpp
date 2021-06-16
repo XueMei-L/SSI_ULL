@@ -4,7 +4,7 @@
 * UNIVERSITY: Universidad de La Laguna
 * SUBJECT: Seguridad en sistemas informaticos
 * VERSION: 2.0
-* PRACTICE: 05
+* PRACTICE: 01
 * TITLE: The vigenere cipher
 * DESCRIPTION: Implement the vigenere cipher
 * COMPILATION: make
@@ -49,7 +49,7 @@ void Vigenere_Cipher::algoritmo(){
         std::cout << "\n>> What operacion do you want to perform with 'Vigenere Encroyption' method" << std::endl
                   << ">> 1. Encrypt.\n"
                   << ">> 2. Descrypt.\n"
-                  << ">> 3. Back to menu" << std::endl;
+                  << ">> 3. Back to the menu" << std::endl;
         std::cout << ">> Your option is:";      
         std::cin >> option;
         if(option == 1) {

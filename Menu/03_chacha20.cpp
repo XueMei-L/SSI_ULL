@@ -1,21 +1,39 @@
+/********************************************************************
+* AUTHOR: XueMei Lin
+* EMAIL: alu0101225845@ull.edu.es
+* UNIVERSITY: University of La Laguna
+* SUBJECT: Security in computer systems
+* VERSION: 5.0
+* PRACTICE: 03
+* TITLE: The chacha20
+* DESCRIPTION: Implement the chacha20 used in SSL/TLS
+* COMPILATION: make
+*              make clean (para eliminar)
+* INFORMATION: More information you can see in this web
+               https://tools.ietf.org/html/rfc7539
+* *****************************************************************/
+
 #include "03_chacha20.hpp"
 
 chacha20::chacha20(/* args */){}
 chacha20::~chacha20(){}
 
-void chacha20::algoritmo() {
+/**
+ * To ask the user what operation wanna perferm
+*/
+void chacha20::menu() {
     std::cout << "\n--------------------Bienvenido al algoritmo Chacha20-------------------------\n";
-    std::cout << "\n>> Que operacion quiere realizar con el algoritmo 'Chacha20'"
-              << "\n>> 1. Cifrar con Chacha20"
-              << "\n>> 2. Volver al menu incial."
-              << "\nSu option es: ";
-    std::string option;
-    std::cin >> option;
     int k = 0;
     while(k == 0) {
+        std::cout << "\n>> Que operacion quiere realizar con el algoritmo 'Chacha20'"
+            << "\n>> 1. Cifrar con Chacha20"
+            << "\n>> 2. Bach to the menu."
+            << "\nSu option es: ";
+        std::string option;
+        std::cin >> option;
         if(option == "1") {
-            algoritmo1();
-            k = 1;
+            algoritmo();
+            k = 0;
         }else if(option == "2") {
             std::cout << "\n--------------------Saliendo al algoritmo Chacha20-----------------\n\n";
             k = 1;
@@ -25,6 +43,43 @@ void chacha20::algoritmo() {
         }
     }
 }
+
+/**
+ * Ask basic date like: key, nonce, count
+ * There are 4 fixed words
+ * 8 words of key = 256 bits
+ * 3 words of nonce = 96 bits
+ * 1 word of stream position = 32 bits
+*/
+void chacha20::algoritmo() {
+    
+    uint8_t key[32];
+    uint8_t nonce[12];
+    uint32_t count;
+
+    printf("\nIntroduzca Clave de 256 bits en forma de 8 palabras en hexadecimal:\n");
+	for(uint8_t i = 0; i < 32; i++) {
+		printf("bytes[%d]:",i);
+		scanf("%2hhxx", key+i);
+	}
+
+	printf("\nIntroduzca Clave de 256 bits en forma de 8 palabras en hexadecimal:\n");
+    for(uint8_t i = 0; i < 12; i++) {
+		printf("bytes[%d]:",i);
+		scanf("%2hhxx", nonce+i);
+	}
+    
+ 	printf("\nIntroduzca Contador de 32 bits en forma de 1 palabra en hexadecimal:\n");
+	scanf("%u", &count);
+
+    lookupTable();
+    Chacha20Block(key, nonce, count);
+    Ronda(state);
+
+    printf("-----------------------Saliendo al algoritmo Chacha20----------------------------\n");
+
+}
+
 
 typedef std::vector<uint8_t> Bytes;
 
@@ -133,31 +188,3 @@ void chacha20::Chacha20Block(uint8_t key[32],  uint8_t nonce[24],  uint32_t coun
         }
     }
 
-void chacha20::algoritmo1(){
-    
-    uint8_t key[32];
-    uint8_t nonce[12];
-    uint32_t count;
-
-    printf("\nIntroduzca Clave de 256 bits en forma de 8 palabras en hexadecimal:\n");
-	for(uint8_t i = 0; i < 32; i++) {
-		printf("bytes[%d]:",i);
-		scanf("%2hhxx", key+i);
-	}
-
-	printf("\nIntroduzca Clave de 256 bits en forma de 8 palabras en hexadecimal:\n");
-    for(uint8_t i = 0; i < 12; i++) {
-		printf("bytes[%d]:",i);
-		scanf("%2hhxx", nonce+i);
-	}
-    
- 	printf("\nIntroduzca Contador de 32 bits en forma de 1 palabra en hexadecimal:\n");
-	scanf("%u", &count);
-
-    lookupTable();
-    Chacha20Block(key, nonce, count);
-    Ronda(state);
-
-    printf("-----------------------Saliendo al algoritmo Chacha20----------------------------\n");
-
-}
