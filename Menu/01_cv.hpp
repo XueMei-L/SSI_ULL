@@ -16,4 +16,4 @@ class Vigenere_Cipher{
 
 };
 
-#endif  //CV_HPP
+#endif //CV_HPP

@@ -38,7 +38,7 @@ Vigenere_Cipher::~Vigenere_Cipher(){}
 
 
 /**
- * Main menu
+ * Main menu to ask what operation wanna perform
 */
 void Vigenere_Cipher::algoritmo(){
     std::cout << "\n------------------------Welcome to the Vigenere algorithm-------------------" << std::endl;
