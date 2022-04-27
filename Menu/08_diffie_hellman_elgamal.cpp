@@ -71,7 +71,7 @@ void DH_GM::algoritmo() {
  * @description: realizar el proceso de calculo de valores publicos y clave secreta
  * ademas, tambien realiza el proceso de cifrar y descifrar.
 */
-void DH_GM::algoritmo1()
+void DH_GM::algoritmo()
 {
     int p; int a; int k; int x; int m;
 
